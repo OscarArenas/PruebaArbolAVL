@@ -74,9 +74,7 @@ public class ArbolAVL {
     private void balancear(int dato) {
         ArrayList<NodoBinarioAVL> ruta = camino(dato);
 
-        int k = ruta.size() - 1;
-
-        for (int i = k; i >= 0; i--) {
+        for (int i = ruta.size() - 1; i >= 0; i--) {
             NodoBinarioAVL nodoA = ruta.get(i);
             nodoA.actualizarAltura();
 
@@ -229,6 +227,7 @@ public class ArbolAVL {
                 } else {
                     padre.hijoDerecho = actual.hijoDerecho;
                 }
+                balancear(padre.dato);
             }
         } else {
             // Caso 2: El actual tiene hijo izquierdo
@@ -246,6 +245,7 @@ public class ArbolAVL {
             } else {
                 padreMasALaDerecha.hijoIzquierdo = masALaDerecha.hijoIzquierdo;
             }
+            balancear(padreMasALaDerecha.dato);
         }
         n--;
         return true;
