@@ -83,23 +83,24 @@ public class ArbolAVL {
             switch (nodoA.factorBalance()) {
                 case -2:
                     if (nodoA.hijoIzquierdo.factorBalance() <= 0) {
-                        rotacionLL(nodoA, padreNodoA);
+                        rotacionII(nodoA, padreNodoA);
                     } else {
-                        rotacionLR(nodoA, padreNodoA);
+                        rotacionID(nodoA, padreNodoA);
                     }
                     break;
                 case 2:
                     if (nodoA.hijoDerecho.factorBalance() >= 0) {
-                        rotacionRR(nodoA, padreNodoA);
+                        rotacionDD(nodoA, padreNodoA);
                     } else {
-                        rotacionRL(nodoA, padreNodoA);
+                        rotacionDI(nodoA, padreNodoA);
                     }
                     break;
             }
         }
     }
 
-    private void rotacionLL(NodoBinarioAVL nodoA, NodoBinarioAVL padreNodoA) {
+    // Rotación Izquierda-Izquierda
+    private void rotacionII(NodoBinarioAVL nodoA, NodoBinarioAVL padreNodoA) {
         NodoBinarioAVL nodoB = nodoA.hijoIzquierdo;
 
         if (nodoA == raiz) {
@@ -117,7 +118,8 @@ public class ArbolAVL {
         nodoB.actualizarAltura();
     }
 
-    private void rotacionLR(NodoBinarioAVL nodoA, NodoBinarioAVL padreNodoA) {
+    // Rotación Izquierda-Derecha
+    private void rotacionID(NodoBinarioAVL nodoA, NodoBinarioAVL padreNodoA) {
         NodoBinarioAVL nodoB = nodoA.hijoIzquierdo;
         NodoBinarioAVL nodoC = nodoB.hijoDerecho;
 
@@ -139,7 +141,8 @@ public class ArbolAVL {
         nodoC.actualizarAltura();
     }
 
-    private void rotacionRR(NodoBinarioAVL nodoA, NodoBinarioAVL padreNodoA) {
+    // Rotación Derecha-Derecha
+    private void rotacionDD(NodoBinarioAVL nodoA, NodoBinarioAVL padreNodoA) {
         NodoBinarioAVL nodoB = nodoA.hijoDerecho;
 
         if (nodoA == raiz) {
@@ -157,7 +160,8 @@ public class ArbolAVL {
         nodoB.actualizarAltura();
     }
 
-    private void rotacionRL(NodoBinarioAVL nodoA, NodoBinarioAVL padreNodoA) {
+    // Rotación Derecha-Izquierda
+    private void rotacionDI(NodoBinarioAVL nodoA, NodoBinarioAVL padreNodoA) {
         NodoBinarioAVL nodoB = nodoA.hijoDerecho;
         NodoBinarioAVL nodoC = nodoB.hijoIzquierdo;
 
@@ -253,6 +257,10 @@ public class ArbolAVL {
 
     public int tamanio() {
         return n;
+    }
+
+    public boolean esVacio() {
+        return n == 0;
     }
 
     public void imprimir() {

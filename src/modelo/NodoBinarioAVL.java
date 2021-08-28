@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Oscar Arenas
+ * Copyright (C) 2020 Oscar Arenas
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ public class NodoBinarioAVL {
         altura = 1;
     }
 
-    void actualizarAltura() {
+    public void actualizarAltura() {
         if (esHoja()) {
             altura = 1;
         } else if (hijoIzquierdo == null) {
@@ -46,7 +46,7 @@ public class NodoBinarioAVL {
         }
     }
 
-    int factorBalance() {
+    public int factorBalance() {
         if (esHoja()) {
             return 0;
         } else if (hijoIzquierdo == null) {
@@ -58,7 +58,15 @@ public class NodoBinarioAVL {
         }
     }
 
-    boolean esHoja() {
+    public boolean esHoja() {
         return hijoIzquierdo == null && hijoDerecho == null;
+    }
+
+    public boolean tieneHijoIzquierdo() {
+        return hijoIzquierdo != null;
+    }
+
+    public boolean tieneHijoDerecho() {
+        return hijoDerecho != null;
     }
 }
