@@ -224,7 +224,7 @@ public class ArbolAVL {
         //Caso 1: el actual no tiene hijoIzquierdo
         if (actual.hijoIzquierdo == null) {
             if (padre == null) {
-                raiz = actual.hijoDerecho;
+                raiz = raiz.hijoDerecho;
             } else {
                 if (dato < padre.dato) {
                     padre.hijoIzquierdo = actual.hijoDerecho;
@@ -244,9 +244,11 @@ public class ArbolAVL {
             }
             actual.dato = masALaDerecha.dato;
 
+            // Cuando el hijoIzquierdo del actual tiene hijoDerecho 
             if (padreMasALaDerecha.hijoDerecho == masALaDerecha) {
                 padreMasALaDerecha.hijoDerecho = masALaDerecha.hijoIzquierdo;
             } else {
+                // Cuando el hijoIzquierdo del actual no tiene hijoDerecho 
                 padreMasALaDerecha.hijoIzquierdo = masALaDerecha.hijoIzquierdo;
             }
             balancear(padreMasALaDerecha.dato);

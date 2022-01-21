@@ -16,6 +16,7 @@
  */
 package pruebaarbolavl;
 
+import edu.oharenas.aleatorio.Aleatorio;
 import modelo.ArbolAVL;
 
 /**
@@ -39,5 +40,16 @@ public class PruebaArbolAVL {
         arbolBalanceado.agregar(10);
 
         arbolBalanceado.imprimir();
+
+        ArbolAVL arbolBalanceado2 = new ArbolAVL();
+
+        int n = 25;
+        for (int i = 0; i < n; i++) {
+            arbolBalanceado2.agregar(Aleatorio.entero(1, 4 * n));
+        }
+
+        System.out.println("Tamaño: " + arbolBalanceado2.tamanio());
+
+        arbolBalanceado2.imprimir();
     }
 }
